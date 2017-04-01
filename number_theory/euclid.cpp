@@ -1,4 +1,4 @@
-// Finds the inverse of a for any mod
+// Finds the inverse of a for any mod given gcd(a, mod) = 1
 int inv(int a, int mod) {
     int s1 = 1, s2 = 0;
     int t1 = 0, t2 = 1;
