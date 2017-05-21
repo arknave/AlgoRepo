@@ -68,5 +68,6 @@ This is a repository of various algorithms and data structures common in program
 [ ] Simplex Algorithm
 
 ## Geometry
+[X] 3D point class
 [ ] Convex Hull
 [X] Why is geometry a thing
