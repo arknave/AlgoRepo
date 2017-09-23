@@ -54,7 +54,7 @@ This is a repository of various algorithms and data structures common in program
 - [ ] 2D Fenwick Tree
 - [ ] Segment Tree
 - [ ] Persistent Segment Tree
-- [ ] Monotone Queue
+- [X] Monotone Queue
 
 ## Strings
 - [ ] Trie
