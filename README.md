@@ -2,14 +2,17 @@ arknave's AlgoRepo
 ===
 
 ### Description: 
-This is a repository of various algorithms and data structures common in programming contests.
+This is a repository of various algorithms and data structures common in
+programming contests. The goal is to have generally reusable code that I
+understand well enough and is tested on actual online judges. Subheaders
+in the below list are problems these implementations were tested on.
 
 # Planned List
 
 ## Graphs
 
 ### Shortest Paths
-- [X] Dijkstra's Algorithm
+- [x] Dijkstra's Algorithm
 - [ ] Bellman-Ford Algorithm
 - [ ] Floyd-Warshall Algorithm
 
@@ -31,11 +34,11 @@ This is a repository of various algorithms and data structures common in program
 ## Math
 
 ### Number Theory
-- [X] Basic Modular arithmetic
-- [X] Sieve of Eratosthenes
-- [X] Chinese Remainder Theorem
+- [x] Basic Modular arithmetic
+- [x] Sieve of Eratosthenes
+- [x] Chinese Remainder Theorem
 - [ ] Extended Euclidean Algorithm
-- [X] Burnside's Lemma
+- [x] Burnside's Lemma
 
 ### Linear Algebra
 - [ ] Gauss-Jordan Elimination
@@ -50,11 +53,15 @@ This is a repository of various algorithms and data structures common in program
 - [ ] Divide and Conquer DP
 
 ## Data Structures
-- [X] Fenwick Tree
+- [x] Fenwick Tree
+  - [x] (DMOJ DS1)[https://dmoj.ca/problem/ds1]
 - [ ] 2D Fenwick Tree
-- [ ] Segment Tree
+- [x] Segment Tree
+  - [x] (DMOJ DS3)[https://dmoj.ca/problem/ds3]
 - [ ] Persistent Segment Tree
-- [X] Monotone Queue
+- [x] Monotone Queue
+- [x] Bit Trie
+  - [x] (Codeforces 706D)[https://codeforces.com/contest/706/problem/D]
 
 ## Strings
 - [ ] Trie
@@ -63,11 +70,13 @@ This is a repository of various algorithms and data structures common in program
 - [ ] Suffix Array & LCP
 - [ ] Suffix Tree
 - [ ] Manacher's Algo
+- [ ] eertree
 
 ## Misc
 - [ ] Simplex Algorithm
 
 ## Geometry
-- [X] 3D point class
+- [x] 2D point class
+- [x] 3D point class
 - [ ] Convex Hull
-- [X] Why is geometry a thing
+- [ ] Clipping
