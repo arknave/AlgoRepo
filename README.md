@@ -54,14 +54,14 @@ in the below list are problems these implementations were tested on.
 
 ## Data Structures
 - [x] Fenwick Tree
-  - [x] (DMOJ DS1)[https://dmoj.ca/problem/ds1]
+  - [x] [DMOJ DS1](https://dmoj.ca/problem/ds1)
 - [ ] 2D Fenwick Tree
 - [x] Segment Tree
-  - [x] (DMOJ DS3)[https://dmoj.ca/problem/ds3]
+  - [x] [DMOJ DS3](https://dmoj.ca/problem/ds3)
 - [ ] Persistent Segment Tree
 - [x] Monotone Queue
 - [x] Bit Trie
-  - [x] (Codeforces 706D)[https://codeforces.com/contest/706/problem/D]
+  - [x] [Codeforces 706D](https://codeforces.com/contest/706/problem/D)
 
 ## Strings
 - [ ] Trie
