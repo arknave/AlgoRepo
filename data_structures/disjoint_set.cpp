@@ -26,6 +26,23 @@ struct DSU {
 
         return 1;
     }
+
+    vector<vi> get_comps() {
+        vector<vi> comps;
+
+        vi comp_id(n, -1);
+        for (int i = 0; i < n; ++i) {
+            int root = find(i);
+            if (comp_id[root] == -1) {
+                comp_id[root] = comps.size();
+                comps.push_back(vi());
+            }
+
+            comps[comp_id[root]].push_back(i);
+        }
+
+        return comps;
+    }
 };
 
 
