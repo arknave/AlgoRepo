@@ -3,7 +3,7 @@
 using namespace std;
 
 template <class T>
-struct maxqueue {
+struct max_queue {
     deque<T> all;
     deque<T> max_q;
     
