@@ -12,16 +12,14 @@ struct BIT {
     }
 
     void update(int x, T v) {
-        ++x;
-        for (; x <= n + 1; x += (x & -x)) {
+        for (x += 1; x <= n + 1; x += (x & -x)) {
             f_tree[x] = f_tree[x] + v;
         }
     }
 
     T query(int x) const {
-        ++x;
         T res = 0;
-        for (; x; x -= (x & -x)) {
+        for (x += 1; x; x -= (x & -x)) {
             res = res + f_tree[x];
         }
 

@@ -27,6 +27,10 @@ struct DSU {
         return 1;
     }
 
+    int get_size(int x) {
+        return -uf[find(x)];
+    }
+
     vector<vi> get_comps() {
         vector<vi> comps;
 
