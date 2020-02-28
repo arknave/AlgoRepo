@@ -19,8 +19,8 @@ struct modint {
 
     modint& operator-=(const modint& other) {
         v -= other.v;
-        if (v <= 0)
-            v -= MOD;
+        if (v < 0)
+            v += MOD;
         return *this;
     }
 
