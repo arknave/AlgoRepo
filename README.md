@@ -4,8 +4,8 @@ arknave's AlgoRepo
 ### Description: 
 This is a repository of various algorithms and data structures common in
 programming contests. The goal is to have generally reusable code that I
-understand well enough and is tested on actual online judges. Subheaders
-in the below list are problems these implementations were tested on.
+understand well enough and is tested on actual online judges. Subheaders in the
+below list are problems these implementations were tested on.
 
 # Planned List
 
@@ -58,6 +58,8 @@ in the below list are problems these implementations were tested on.
 - [ ] 2D Fenwick Tree
 - [x] Segment Tree
   - [x] [DMOJ DS3](https://dmoj.ca/problem/ds3)
+- [x] Lazy segment Tree
+  - [x] [USACO Dec15 Counting Haybales](http://usaco.org/index.php?page=viewproblem2&cpid=578)
 - [ ] Persistent Segment Tree
 - [x] Monotone Queue
 - [x] Bit Trie
@@ -66,7 +68,7 @@ in the below list are problems these implementations were tested on.
 ## Strings
 - [ ] Trie
 - [ ] KMP
-- [ ] Z Algorithm
+- [x] Z Algorithm
 - [ ] Suffix Array & LCP
 - [ ] Suffix Tree
 - [ ] Manacher's Algo
@@ -76,7 +78,7 @@ in the below list are problems these implementations were tested on.
 - [ ] Simplex Algorithm
 
 ## Geometry
-- [x] 2D point class
+- [ ] 2D point class
 - [x] 3D point class
 - [ ] Convex Hull
 - [ ] Clipping
