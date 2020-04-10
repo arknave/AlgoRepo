@@ -1,9 +1,14 @@
 struct modint {
-    static const int MOD = 1e9 + 7;
+    static constexpr int MOD = 1000000007;
+    // static constexpr int MOD = 998244353;
 
     int v;
     modint(const int _v = 0): v(_v % MOD) {
         if (v < 0) v += MOD;
+    }
+
+    modint(const modint& other) {
+        v = other.v;
     }
 
     bool operator==(const modint& other) const {
@@ -69,6 +74,7 @@ struct modint {
     }
 };
 
+/*
 modint fact[MAXN], tcaf[MAXN];
 
 void gen_fact() {
@@ -89,3 +95,4 @@ modint choose(int n, int k) {
 
     return fact[n] * tcaf[k] * tcaf[n - k];
 }
+*/
