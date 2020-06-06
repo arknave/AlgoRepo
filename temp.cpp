@@ -2,17 +2,21 @@
 
 using namespace std;
 
+#ifdef KACTL
+#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#define trav(a, x) for(auto& a : x)
+#define sz(x) (int)(x).size()
+#endif
 #define all(x) begin(x), end(x)
 
-using ll = long long;
+using ll = int64_t;
 using ld = long double;
-using pii = pair<int, int>;
-using vi = vector<int>;
+using pii = pair<int32_t, int32_t>;
+using vi = vector<int32_t>;
 
-int main() {
+int32_t main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0); cout.tie(0);
 
-    
     return 0;
 }

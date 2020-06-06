@@ -1,19 +1,24 @@
+template <int MOD>
 struct modint {
-    static constexpr int MOD = 1000000007;
-    // static constexpr int MOD = 998244353;
-
-    int v;
-    modint(const int _v = 0): v(_v % MOD) {
-        if (v < 0) v += MOD;
+    static ll fix(ll x) {
+        x %= MOD;
+        if (x < 0) x += MOD;
+        return x;
     }
+
+    ll v;
+    modint(const ll _v = 0): v(fix(_v)) {}
 
     modint(const modint& other) {
         v = other.v;
     }
 
-    bool operator==(const modint& other) const {
-        return v == other.v;
-    }
+    bool operator<(const modint& other) const { return v < other.v; }
+    bool operator>(const modint& other) const { return v > other.v; }
+    bool operator<=(const modint& other) const { return v <= other.v; }
+    bool operator>=(const modint& other) const { return v >= other.v; }
+    bool operator==(const modint& other) const { return v == other.v; }
+    bool operator!=(const modint& other) const { return v != other.v; }
 
     modint& operator+=(const modint& other) {
         v += other.v;
@@ -56,9 +61,17 @@ struct modint {
     }
 
     static modint pow(const modint& b, ll e) {
-        if (e == 0) return 1;
-        modint x = pow(b * b, e / 2);
-        return (e % 2) ? b * x : x;
+        modint res = 1;
+        modint bb = b;
+        for (ll p = 1; p <= e; p <<= 1) {
+            if (e & p) {
+                res *= bb;
+            }
+
+            bb *= bb;
+        }
+
+        return res;
     }
 
     modint pow(ll e) const {
@@ -69,13 +82,24 @@ struct modint {
         return pow(MOD - 2);
     }
 
-    friend ostream& operator<<(ostream& os, modint m) {
+    friend istream& operator>>(istream& is, modint& m) {
+        ll x;
+        is >> x;
+
+        m.v = fix(x);
+
+        return is;
+    }
+
+    friend ostream& operator<<(ostream& os, const modint& m) {
         return os << m.v;
     }
 };
+using mi = modint<1'000'000'007>;
+using mi = modint<988'244'353>;
 
 /*
-modint fact[MAXN], tcaf[MAXN];
+mi fact[MAXN], tcaf[MAXN];
 
 void gen_fact() {
     fact[0] = 1;
@@ -83,13 +107,13 @@ void gen_fact() {
         fact[i] = fact[i - 1] * i;
     }
 
-    tcaf[MAXN - 1] = modint(1) / fact[MAXN - 1];
+    tcaf[MAXN - 1] = mi(1) / fact[MAXN - 1];
     for (int i = MAXN - 2; i >= 0; --i) {
         tcaf[i] = tcaf[i + 1] * (i + 1);
     }
 }
 
-modint choose(int n, int k) {
+mi choose(int n, int k) {
     assert(n >= 0);
     assert(0 <= k and k <= n);
 

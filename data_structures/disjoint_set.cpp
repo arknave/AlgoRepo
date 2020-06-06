@@ -1,7 +1,7 @@
 struct DSU {
     int n;
     // uf[x] = parent of x or negative size of component
-    vector<int> uf;
+    vi uf;
     DSU(int n): n(n) {
         uf.assign(n, -1);
     }

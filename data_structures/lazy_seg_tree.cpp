@@ -22,7 +22,8 @@ struct lazy_seg_tree {
 
     int n;
     vector<T> table;
-    vector<bool> has; vector<U> ops;
+    vector<bool> has;
+    vector<U> ops;
 
     lazy_seg_tree(int n): n(n) {
         table.resize(n + n, unit), has.resize(n), ops.resize(n, noop);
