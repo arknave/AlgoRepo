@@ -22,12 +22,14 @@ namespace std {
 } // namespace std
 
 // Usage
-std::y_combinator([&](auto self, int u, int p) -> int {
+auto dfs = std::y_combinator([&](auto dfs, int u, int p) -> int {
     sz[u] = 1;
     for (int v : graph[u]) {
         if (v == p) continue;
-        sz[u] += self(v, u);
+        sz[u] += dfs(v, u);
     }
 
     return sz[u];
 });
+
+dfs(0, -1);

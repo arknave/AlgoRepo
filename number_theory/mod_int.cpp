@@ -13,6 +13,7 @@ struct modint {
         v = other.v;
     }
 
+    // not generally useful, but good for maps?
     bool operator<(const modint& other) const { return v < other.v; }
     bool operator>(const modint& other) const { return v > other.v; }
     bool operator<=(const modint& other) const { return v <= other.v; }
