@@ -88,6 +88,8 @@ struct lazy_seg_tree {
 
     // query [i, j)
     T query(int i, int j) {
+        if (i >= j) return unit;
+
         i += n, j += n;
         propagate(i), propagate(j - 1);
         T left = unit, right = unit;

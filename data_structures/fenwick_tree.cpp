@@ -33,6 +33,7 @@ struct BIT {
     }
 
     /*
+    // query [l, r]
     inline T query(int l, int r) const {
         return query(r) - query(l - 1);
     }
