@@ -31,6 +31,10 @@ struct DSU {
         return -uf[find(x)];
     }
 
+    inline bool same(int x, int y) {
+        return find(x) == find(y);
+    }
+
     vector<vi> get_comps() {
         vector<vi> comps;
 
