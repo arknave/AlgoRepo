@@ -1,15 +1,15 @@
 template <int MOD>
 struct modint {
-    static ll fix(ll x) {
+    constexpr static int64_t fix(int64_t x) {
         x %= MOD;
         if (x < 0) x += MOD;
         return x;
     }
 
-    ll v;
-    modint(const ll _v = 0): v(fix(_v)) {}
+    int64_t v;
+    constexpr modint(const int64_t _v = 0): v(fix(_v)) {}
 
-    modint(const modint& other) {
+    constexpr modint(const modint& other) {
         v = other.v;
     }
 
@@ -61,10 +61,10 @@ struct modint {
         return modint(v) /= other;
     }
 
-    static modint pow(const modint& b, ll e) {
+    static modint pow(const modint& b, int64_t e) {
         modint res = 1;
         modint bb = b;
-        for (ll p = 1; p <= e; p <<= 1) {
+        for (int64_t p = 1; p <= e; p <<= 1) {
             if (e & p) {
                 res *= bb;
             }
@@ -75,7 +75,7 @@ struct modint {
         return res;
     }
 
-    modint pow(ll e) const {
+    modint pow(int64_t e) const {
         return pow(*this, e);
     }
 
@@ -84,7 +84,7 @@ struct modint {
     }
 
     friend istream& operator>>(istream& is, modint& m) {
-        ll x;
+        int64_t x;
         is >> x;
 
         m.v = fix(x);
@@ -97,7 +97,7 @@ struct modint {
     }
 };
 using mi = modint<1'000'000'007>;
-using mi = modint<988'244'353>;
+using mi = modint<998'244'353>;
 
 /*
 mi fact[MAXN], tcaf[MAXN];

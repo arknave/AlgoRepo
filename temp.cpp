@@ -14,9 +14,9 @@ using ld = long double;
 using pii = pair<int32_t, int32_t>;
 using vi = vector<int32_t>;
 
-int32_t main() {
+int main() {
     ios_base::sync_with_stdio(false);
-    cin.tie(0); cout.tie(0);
+    cin.tie(nullptr);
 
     return 0;
 }

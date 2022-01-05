@@ -1,11 +1,11 @@
-struct seg_tree {
+struct SegTree {
     using T = int;
     static constexpr T unit = INT_MIN;
     T f(T a, T b) { return max(a, b); }
 
     int n;
     vector<T> data;
-    seg_tree(int n): n(n) {
+    SegTree(int n): n(n) {
         data.assign(n << 1, unit);
     }
 

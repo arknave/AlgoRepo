@@ -1,5 +1,5 @@
 // Credit: saketh-are
-struct lazy_seg_tree {
+struct LazySegTree {
     using T = array<ll, 3>;
     using U = ll;
     const T unit = T{0, INF, 0};
@@ -25,7 +25,7 @@ struct lazy_seg_tree {
     vector<bool> has;
     vector<U> ops;
 
-    lazy_seg_tree(int n): n(n) {
+    LazySegTree(int n): n(n) {
         table.resize(n + n, unit), has.resize(n), ops.resize(n, noop);
     }
 

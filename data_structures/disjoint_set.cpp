@@ -31,7 +31,7 @@ struct DSU {
         return -uf[find(x)];
     }
 
-    inline bool same(int x, int y) {
+    inline bool is_same(int x, int y) {
         return find(x) == find(y);
     }
 
