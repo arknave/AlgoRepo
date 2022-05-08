@@ -25,7 +25,7 @@ struct BIT {
 
     T query(int x) const {
         T res = unit;
-        for (++x; x; x -= (x & -x)) {
+        for (++x; x > 0; x -= (x & -x)) {
             res = f(res, f_tree[x]);
         }
 

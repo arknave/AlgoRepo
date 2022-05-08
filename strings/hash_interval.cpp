@@ -27,15 +27,69 @@ struct H {
 
 static const H C = (ll)1e11+3; // (order ~ 3e9; random also ok)
 
-struct HashInterval {
-	vector<H> ha, pw;
-	HashInterval(const string& str) : ha(str.size() + 1), pw(ha) {
-		pw[0] = 1;
-		for (size_t i = 0; i < str.size(); ++i)
-			ha[i+1] = ha[i] * C + str[i],
-			pw[i+1] = pw[i] * C;
-	}
-	H hashInterval(int a, int b) const { // hash [a, b)
-		return ha[b] - ha[a] * pw[b - a];
-	}
+// Class for polynomial hashing.
+// Computes the polynomial hash s[0] x^n + s[1] x^(n - 1) + ... s[n - 1]
+// Pass in any number of xs, and it will use all the x values and types.
+// Since the outputs are all tuples, they can be compared for equality.
+// Tested on kattis:powerstrings, 
+template<typename... Ts>
+class Hasher {
+public:
+    using Val = std::tuple<Ts...>;
+
+    template <typename Seq>
+    Hasher(Seq seq, Ts... coeffs): n_(seq.size()), coeffs_(coeffs...) {
+        pows_.reserve(seq.size() + 1);
+        pows_.emplace_back(Ts(1)...);
+
+        prefixes_.reserve(seq.size() + 1);
+        prefixes_.emplace_back(Ts(0)...);
+
+        for (auto c : seq) {
+            pows_.emplace_back(linear(0, pows_.back(), coeffs...));
+            prefixes_.emplace_back(linear(c, prefixes_.back(), coeffs...));
+        }
+    }
+
+    /**
+     * hash [a, b)
+     */
+    Val hashInterval(int a, int b) const {
+        return compute(prefixes_[b], prefixes_[a], pows_[b - a]);
+    }
+private:
+    template <typename T>
+    static Val linear(T c, const Val& val, Ts... coeffs) {
+        return linear_impl(
+            c,
+            val,
+            std::make_index_sequence<std::tuple_size_v<Val>>(),
+            coeffs...
+        );
+    }
+
+    template <typename T, size_t... I>
+    static Val linear_impl(T c, const Val& val, std::index_sequence<I...>, Ts... coeffs) {
+        return Val((Ts(c) + std::get<I>(val) * coeffs)...);
+    }
+
+    // return a - b * c
+    static Val compute(const Val& a, const Val& b, const Val& c) {
+        return compute_impl(
+            a,
+            b,
+            c,
+            std::make_index_sequence<std::tuple_size_v<Val>>()
+        );
+    }
+
+    template <size_t... I>
+    static Val compute_impl(const Val& a, const Val& b, const Val& c, std::index_sequence<I...>) {
+        return Val((std::get<I>(a) - std::get<I>(b) * std::get<I>(c))...);
+    }
+
+    size_t n_;
+    Val coeffs_;
+    std::vector<Val> pows_;
+    std::vector<Val> prefixes_;
 };
