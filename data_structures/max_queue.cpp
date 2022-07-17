@@ -4,8 +4,8 @@ using namespace std;
 
 template <class T>
 struct max_queue {
-    deque<T> all;
-    deque<T> max_q;
+    std::deque<T> all;
+    std::deque<T> max_q;
     
     void add(T elem) {
         all.push_back(elem);
@@ -24,7 +24,7 @@ struct max_queue {
         all.pop_front();
     }
     
-    T get_max() {
+    T get_max() const {
         return max_q.front();
     }
 };

@@ -83,7 +83,7 @@ struct modint {
         return pow(MOD - 2);
     }
 
-    friend istream& operator>>(istream& is, modint& m) {
+    friend std::istream& operator>>(std::istream& is, modint& m) {
         int64_t x;
         is >> x;
 
@@ -92,7 +92,7 @@ struct modint {
         return is;
     }
 
-    friend ostream& operator<<(ostream& os, const modint& m) {
+    friend std::ostream& operator<<(std::ostream& os, const modint& m) {
         return os << m.v;
     }
 };
