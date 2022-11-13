@@ -1,3 +1,4 @@
+// z_func: z[i] is the LCP of s[0:] and s[i:]. z[0] is undefined.
 // source: kactl?
 template<typename T> 
 vi z_func(const T& s) {

@@ -56,4 +56,3 @@ struct Point {
         return os << "(" << pt.x << ", " << pt.y << ")";
     }
 };
-

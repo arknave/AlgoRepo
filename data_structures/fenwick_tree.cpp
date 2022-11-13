@@ -25,7 +25,7 @@ struct BIT {
     }
 
     // f applied to range [0..x]
-    T query(int x) const {
+    T query(int32_t x) const {
         T res = unit;
         for (++x; x > 0; x -= (x & -x)) {
             res = f(res, f_tree[x]);
