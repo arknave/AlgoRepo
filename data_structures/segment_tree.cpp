@@ -1,6 +1,6 @@
 // zero indexed
 struct SegTree {
-    using T = int64_T;
+    using T = int64_t;
     static constexpr T unit = std::numeric_limits<T>::min();
     T f(T a, T b) { return std::max(a, b); }
 

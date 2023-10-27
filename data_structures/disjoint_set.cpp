@@ -10,7 +10,7 @@ struct DSU {
         return uf[x] < 0 ? x : (uf[x] = find(uf[x]));
     }
 
-    int32_t merge(int32_t x, int32_t y) {
+    bool merge(int32_t x, int32_t y) {
         int32_t xr = find(x);
         int32_t yr = find(y);
         if (xr == yr)

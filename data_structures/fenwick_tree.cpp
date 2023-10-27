@@ -5,7 +5,7 @@ using namespace std;
 // 0 indexed template
 struct BIT {
     using T = int32_t;
-    T unit = 0;
+    static constexpr T UNIT = 0;
 
     static T f(const T& a, const T& b) {
         return a + b;
@@ -14,7 +14,7 @@ struct BIT {
     int32_t n;
     std::vector<T> f_tree;
     BIT(int32_t n): n(n) {
-        f_tree.assign(n + 1, unit);
+        f_tree.assign(n + 1, UNIT);
     }
 
     // data[x] = f(data[x], v)
@@ -26,7 +26,7 @@ struct BIT {
 
     // f applied to range [0..x]
     T query(int32_t x) const {
-        T res = unit;
+        T res = UNIT;
         for (++x; x > 0; x -= (x & -x)) {
             res = f(res, f_tree[x]);
         }
@@ -45,6 +45,8 @@ struct BIT {
 
 struct BIToBIT {
     using T = BIT::T;
+    static constexpr T UNIT = BIT::UNIT;
+
     int32_t n;
     std::vector<BIT> f_tree;
     std::vector<std::vector<T>> vals;
@@ -80,7 +82,7 @@ struct BIToBIT {
 
     // get sum of values <= v where idx <= idx
     T query(int32_t idx, int32_t v) {
-        T res = f_tree[0].unit;
+        T res = UNIT;
         for (++idx; idx > 0; idx -= (idx & -idx)) {
             auto it = std::upper_bound(vals[idx].begin(), vals[idx].end(), v);
             T sub = f_tree[idx].query(it - vals[idx].begin() - 1);

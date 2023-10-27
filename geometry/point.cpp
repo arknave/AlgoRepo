@@ -48,11 +48,19 @@ struct Point {
         return (a - *this).cross(b - *this);
     }
 
+    double dist() const {
+        return std::sqrt(static_cast<double>(dist2()));
+    }
+
+    T dist2() const {
+        return dot(*this);
+    }
+
     friend std::istream& operator>>(std::istream& is, P& pt) {
         return is >> pt.x >> pt.y;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, P& pt) {
+    friend std::ostream& operator<<(std::ostream& os, const P& pt) {
         return os << "(" << pt.x << ", " << pt.y << ")";
     }
 };

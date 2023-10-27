@@ -54,7 +54,7 @@ public:
     /**
      * hash [a, b)
      */
-    Val hashInterval(int a, int b) const {
+    Val hashInterval(size_t a, size_t b) const {
         return compute(prefixes_[b], prefixes_[a], pows_[b - a]);
     }
 private:
