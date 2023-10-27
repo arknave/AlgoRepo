@@ -1,3 +1,4 @@
+// Tested on https://open.kattis.com/problems/kannafriendship
 struct IntervalContainer {
     using T = int64_t;
     using I = std::array<int64_t, 2>;
