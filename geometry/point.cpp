@@ -7,13 +7,18 @@ struct Point {
 
     using P = Point;
 
-    bool operator<(P o) const {
-        return std::tie(x, y) < std::tie(o.x, o.y);
-    }
-
     bool operator==(P o) const {
         return (x == o.x) & (y == o.y);
     }
+
+    auto operator<=>(P o) const = default;
+
+    /*
+    // for pre c++20...
+    bool operator<(P o) const {
+        return std::tie(x, y) < std::tie(o.x, o.y);
+    }
+    */
 
     P& operator+=(P other) {
         x += other.x;
@@ -64,3 +69,8 @@ struct Point {
         return os << "(" << pt.x << ", " << pt.y << ")";
     }
 };
+
+template <typename T>
+Point<T> operator*(T scale, Point<T> p) {
+    return p * scale;
+}

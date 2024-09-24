@@ -1,6 +1,6 @@
 // Credit: saketh-are
 struct LazySegTree {
-    using T = array<ll, 3>;
+    using T = std::array<ll, 3>;
     using U = ll;
     const T unit = T{0, INF, 0};
     const U noop = 0;
@@ -21,9 +21,9 @@ struct LazySegTree {
     }
 
     int n;
-    vector<T> table;
-    vector<bool> has;
-    vector<U> ops;
+    std::vector<T> table;
+    std::vector<bool> has;
+    std::vector<U> ops;
 
     LazySegTree(int n): n(n) {
         table.resize(n + n, unit), has.resize(n), ops.resize(n, noop);

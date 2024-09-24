@@ -1,22 +1,24 @@
 struct Trie {
-    static constexpr int LOGN = 61;
+    // must be unsigned
+    using T = uint64_t;
+    static constexpr int BITS = std::numeric_limits<T>::digits;
 
-    int next_node;
-    vector<vector<int>> data;
-    vector<int> hits;
+    T numNodes;
+    std::vector<std::array<T, 2>> data;
+    std::vector<T> hits;
 
-    Trie(): next_node(1) {
-        data.emplace_back(2, 0);
+    Trie(): numNodes(1) {
+        data.push_back({0, 0});
         hits.push_back(0);
     }
 
-    void insert(ll x) {
-        int node = 0;
-        for (ll bit = LOGN - 1; bit >= 0; --bit) {
-            bool b = (x & (1LL << bit)) > 0;
+    void insert(T x) {
+        T node = 0;
+        for (T bit = BITS - 1; bit < BITS; --bit) {
+            bool b = x >> bit & 1;
             if (!data[node][b]) {
-                data[node][b] = next_node++;
-                data.emplace_back(2, 0);
+                data[node][b] = numNodes++;
+                data.push_back({0, 0});
                 hits.push_back(0);
             }
 
@@ -25,10 +27,10 @@ struct Trie {
         }
     }
 
-    void remove(ll x) {
-        int node = 0;
-        for (ll bit = LOGN - 1; bit >= 0; --bit) {
-            bool b = (x & (1LL << bit)) > 0;
+    void remove(T x) {
+        T node = 0;
+        for (T bit = BITS - 1; bit < BITS; --bit) {
+            bool b = x >> bit & 1;
             assert(data[node][b] != 0);
             node = data[node][b];
             --hits[node];
@@ -36,13 +38,13 @@ struct Trie {
     }
 
     // Find the y that maximizes x ^ y
-    ll query(ll x) {
-        int node = 0;
-        ll res = 0LL;
-        for (ll bit = LOGN - 1; bit >= 0; --bit) {
-            bool b = (x & (1LL << bit)) > 0;
+    T query(u64 x) {
+        T node = 0;
+        T res = 0;
+        for (T bit = BITS - 1; bit < BITS; --bit) {
+            bool b = x >> bit & 1;
             if (hits[data[node][b ^ 1]]) {
-                res ^= (1LL << bit);
+                res ^= (1ULL << bit);
                 node = data[node][b ^ 1];
             } else {
                 node = data[node][b];

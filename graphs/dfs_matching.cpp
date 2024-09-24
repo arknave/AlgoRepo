@@ -1,7 +1,7 @@
 #pragma once
 
 struct DFSMatching {
-    DFSMatching(int32_t n, int32_t m): n_(n), m_(m), graph(n), rev_(m, -1), vis(m, 0) {}
+    DFSMatching(int32_t n, int32_t m): n_(n), m_(m), graph_(n), rev_(m, -1), vis_(m, 0) {}
 
     void addEdge(int32_t u, int32_t v) {
         graph_[u].push_back(v);
@@ -12,7 +12,7 @@ struct DFSMatching {
         vis_[j] = true;
         int32_t i = rev_[j];
         for (auto k : graph_[i]) {
-            if (!vis[k] && find(k)) {
+            if (!vis_[k] && find(k)) {
                 rev_[k] = i;
                 return true;
             }

@@ -1,7 +1,5 @@
 #include <queue>
 
-using namespace std;
-
 template <class T>
 struct max_queue {
     std::deque<T> all;

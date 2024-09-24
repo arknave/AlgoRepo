@@ -7,7 +7,7 @@ struct BIT {
     using T = int32_t;
     static constexpr T UNIT = 0;
 
-    static T f(const T& a, const T& b) {
+    constexpr static T f(T a, T b) {
         return a + b;
     }
 

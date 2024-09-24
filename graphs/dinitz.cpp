@@ -2,6 +2,7 @@
 // Just from kactl with expanded macros
 struct Dinitz {
     using Flow_t = int64_t;
+    static constexpr Flow_t INF = std::numeric_limits<Flow_t>::max();
 	struct Edge {
 		int32_t to, rev;
 		Flow_t cap, origCap;
@@ -53,7 +54,6 @@ struct Dinitz {
     }
 
     Flow_t calc(int32_t src, int32_t sink) {
-        constexpr Flow_t INF = std::numeric_limits<Flow_t>::max();
 
         Flow_t flow{};
         for (Flow_t bit = 0; bit < 31; ++bit) {

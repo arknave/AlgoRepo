@@ -1,0 +1,1 @@
+lca(u, v) with respect to root r is odd one out of lca(u, v), lca(u, r) and lca(v, r).

@@ -25,7 +25,7 @@ struct TreeInfo {
         for (auto v : tree[u]) if (v != parent(u)) {
             sparseTable[0][v] = u;
             depth[v] = depth[u] + 1;
-            dfs(tree, v, u);
+            dfs(tree, v);
         }
 
         timeOut[u] = timestamp;

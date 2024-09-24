@@ -1,20 +1,20 @@
 // 0 indexed template
 struct P_BIT {
-    using T = int;
-    constexpr T MIN_VAL = -0x3f3f3f3f;
-    int n, id;
+    using T = int32_t;
+    static constexpr T MIN_VAL = std::numeric_limits<T>::min();
+    int32_t n, id;
     // id, val
-    vector<vector<pair<int, T>>> f_tree;
+    std::vector<std::vector<std::pair<int32_t, T>>> f_tree;
 
-    inline T op(T a, T b) const {
+    constexpr static T op(T a, T b) {
         return a + b;
     }
 
-    P_BIT(int n): n(n), id(0) {
+    P_BIT(int32_t n): n(n), id(0) {
         f_tree.resize(n + 1);
     }
 
-    void update(int x, T v) {
+    void update(int32_t x, T v) {
         for (++x; x <= n; x += (x & -x)) {
             if (f_tree[x].empty()) {
                 f_tree[x].emplace_back(id, v);
@@ -27,19 +27,19 @@ struct P_BIT {
     }
 
     // query [0, x] only considering values before day d
-    T query(int x, int d) const {
+    T query(int32_t x, int32_t d) const {
         T res = 0;
-        for (++x; x; x -= (x & -x)) {
-            auto it = lower_bound(all(f_tree[x]), pair<int, T>{d + 1, MIN_VAL);
-            if (it != begin(f_tree[x])) {
-                res = op(res, prev(it)->second);
+        for (++x; x > 0; x -= (x & -x)) {
+            auto it = std::lower_bound(f_tree[x].begin(), f_tree[x].end(), std::pair<int32_t, T>{d + 1, MIN_VAL});
+            if (it != std::begin(f_tree[x])) {
+                res = op(res, std::prev(it)->second);
             }
         }
 
         return res;
     }
 
-    inline void step() {
+    void step() {
         ++id;
     }
 };

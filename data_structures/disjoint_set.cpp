@@ -27,14 +27,16 @@ struct DSU {
         return 1;
     }
 
-    int32_t get_size(int32_t x) {
+    int32_t getSize(int32_t x) {
         return -uf[find(x)];
     }
 
-    bool is_same(int32_t x, int32_t y) {
+    bool isSame(int32_t x, int32_t y) {
         return find(x) == find(y);
     }
+};
 
+// add this function if needed
     std::vector<std::vector<int32_t>> getComps() {
         std::vector<std::vector<int32_t>> comps;
         std::vector<int32_t> comp_id(n, -1);
